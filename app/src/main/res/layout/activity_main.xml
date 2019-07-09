@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        tools:context="michaelzhao.MainActivity">
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  tools:ignore="MissingConstraints">
+
+        <FrameLayout android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+            <michaelzhao.controls.VideoPlayer android:id="@+id/mVideoPlayer"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="260dp"/>
+
+        </FrameLayout>
+
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <Button android:id="@+id/btn1"
+                    android:layout_width="100dp"
+                    android:text="Play"
+                    android:layout_height="50dp"/>
+
+            <Button android:id="@+id/btn2"
+                    android:layout_width="100dp"
+                    android:text="Pause"
+                    android:layout_height="50dp"/>
+
+            <Button android:id="@+id/btn3"
+                    android:layout_width="100dp"
+                    android:text="Stop"
+                    android:layout_height="50dp"/>
+
+            <Button android:id="@+id/btn4"
+                    android:layout_width="100dp"
+                    android:text="..."
+                    android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:id="@+id/mRootLayout"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/mMain_Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black"
+                    android:fitsSystemWindows="false">
+
+        <!--Core Video-->
+        <VideoView
+                android:id="@+id/mVideoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"/>
+
+        <!-- Preview Image -->
+        <ImageView
+                android:id="@+id/mPreviewImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"/>
+
+        <!--顶部标题栏-->
+        <LinearLayout
+                android:id="@+id/mTop_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/biz_video_bar_bg"
+                android:orientation="vertical"
+                android:paddingEnd="5dp">
+
+            <View
+                    android:id="@+id/statusbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/transparent"
+                    android:visibility="gone"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:focusable="true">
+
+                <ImageButton
+                        android:id="@+id/mButtonBack"
+                        style="?android:attr/actionButtonStyle"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="45dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_btn_back"/>
+
+                <TextView
+                        android:id="@+id/mVideoTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="#fff"/>
+
+                <ImageButton
+                        android:id="@+id/buttonFavor"
+                        style="?android:attr/actionButtonStyle"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/ic_notfavor"/>
+
+                <ImageButton
+                        android:id="@+id/buttonMenu"
+                        style="?android:attr/actionButtonStyle"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/ic_menu"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--底部控制栏-->
+        <LinearLayout
+                android:id="@+id/mBottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/media_controller_view_height"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/biz_video_bar_bg"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+            <ImageButton
+                    android:id="@+id/mSmallPlayBtn"
+                    style="?android:attr/actionButtonStyle"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_btn_play"/>
+
+            <RelativeLayout
+                    android:id="@+id/click_layout"
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0">
+
+                <TextView
+                        android:id="@+id/mTextTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignEnd="@+id/mVideoProgress"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="16.5dp"
+                        android:text="00:00:00/00:00:00"
+                        android:textColor="@android:color/white"
+                        android:textSize="11.0sp"/>
+
+
+                <SeekBar
+                        android:id="@+id/mVideoProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="-10dp"
+                        android:layout_marginRight="-10dp"
+                        android:progressDrawable="@drawable/biz_video_progressbar"
+                        style="@android:style/Widget.DeviceDefault.SeekBar"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent">
+
+                <ImageButton
+                        android:id="@+id/mShrinkBtn"
+                        style="?android:attr/actionButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_shrink"
+                        android:visibility="gone"/>
+
+                <ImageButton
+                        android:id="@+id/mExpandBtn"
+                        style="?android:attr/actionButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_expand"
+                        android:visibility="visible"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- Play Btn -->
+        <ImageView
+                android:id="@+id/mBigPlayBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_mainbtn_play"/>
+
+        <!-- Loading Progress -->
+        <ProgressBar
+                android:id="@+id/mLoadingProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <!-- Volume Layout -->
+    <LinearLayout
+            android:id="@+id/mVolume_layout"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@drawable/toastback"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                app:srcCompat="@drawable/ic_volume"/>
+
+        <TextView
+                android:id="@+id/mText_volume"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="9dp"
+                android:gravity="center_horizontal"
+                android:text="15 / 15"
+                android:textColor="#fff"/>
+
+    </LinearLayout>
+
+    <!-- Brightness Layout -->
+    <LinearLayout
+            android:id="@+id/mBrightness_layout"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@drawable/toastback"
+            android:gravity="fill"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                app:srcCompat="@drawable/ic_brightness"/>
+
+        <TextView
+                android:id="@+id/mText_brightness"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:gravity="center_horizontal"
+                android:text="100%"
+                android:textAlignment="center"
+                android:textColor="#fff"/>
+
+    </LinearLayout>
+
+</FrameLayout>
