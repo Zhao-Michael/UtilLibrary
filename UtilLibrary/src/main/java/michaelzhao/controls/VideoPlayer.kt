@@ -59,6 +59,7 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
     private var mTimeThread: Thread? = null
     private var mHideBarTick = -1
     private var mHideLoadTick = -1
+    private var mShowLoadTick = 0
     private var mCurrPlayTime = 0
     private var mVideoUri: String = ""
     private var mEnableSeekVideo = true
@@ -437,7 +438,13 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
                 && mOld_Position == mVideoView.currentPosition
                 && mVideoView.currentPosition > 100
             ) {
-                showLoading()
+                mShowLoadTick++
+                if (mShowLoadTick > 2) {
+                    showLoading()
+                    mShowLoadTick = 0
+                }
+            } else {
+                mShowLoadTick = 0
             }
 
             if (mVideoView.isPlaying
