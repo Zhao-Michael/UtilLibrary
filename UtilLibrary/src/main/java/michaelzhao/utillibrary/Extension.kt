@@ -131,6 +131,11 @@ fun <T> MutableList<out T>.removeLast() {
     if (size > 1) removeAt(size - 1)
 }
 
+fun View.removeFromParent() {
+    if (parent != null)
+        (parent as ViewGroup).removeView(this)
+}
+
 fun View.onClick(run: () -> Unit) {
     setOnClickListener { run.invoke() }
 }
@@ -177,8 +182,12 @@ fun Context.toast(str: String, duration: Int) {
     Toast.makeText(this, str, duration).show()
 }
 
-fun Context.getDrawableIcon(icon: IIcon, size: Int = 18): IconicsDrawable {
-    return IconicsDrawable(this).icon(icon).color(IconicsColor.parse("white")).sizeDp(size)
+fun Context.getDrawableIcon(
+    icon: IIcon,
+    size: Int = 18,
+    color: IconicsColor = IconicsColor.parse("white")
+): IconicsDrawable {
+    return IconicsDrawable(this).icon(icon).color(color).sizeDp(size)
 }
 
 fun Activity.getStatusBarHeight(): Int {

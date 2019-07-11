@@ -276,6 +276,7 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
 
     fun SetVideoUrl(url: String) {
         mVideoUri = url
+        StopVideo()
     }
 
     fun StartVideo() {
@@ -312,6 +313,7 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
             mBigPlayBtn.show()
             setSmallPlayBtnState()
             mCurrentState = STATUS.STATE_IDLE
+            mVideoProgress.progress = 0
             mVideoView.stopPlayback()
             mTimeThread = null
         }
