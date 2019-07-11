@@ -316,6 +316,7 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
             mCurrentState = STATUS.STATE_IDLE
             mVideoProgress.progress = 0
             mVideoView.stopPlayback()
+            updateTimeLabel()
             mTimeThread = null
         }
     }
@@ -413,15 +414,19 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
     private fun updatePlayProgress() {
         uiThread {
             if (mCurrentState == STATUS.STATE_PLAYING) {
-                val allTime = max(mVideoView.duration, 1)
-                mCurrPlayTime = mVideoView.currentPosition
-                mVideoProgress.progress = mCurrPlayTime * 100 / allTime
-                val time =
-                    "${mFormatter.format(Date(mCurrPlayTime.toLong()))}/${mFormatter.format(Date(allTime.toLong()))}"
-                mTextTime.text = time
+                updateTimeLabel()
             }
             mVideoProgress.secondaryProgress = mVideoView.bufferPercentage
         }
+    }
+
+    private fun updateTimeLabel() {
+        val allTime = max(mVideoView.duration, 1)
+        mCurrPlayTime = mVideoView.currentPosition
+        mVideoProgress.progress = mCurrPlayTime * 100 / allTime
+        val time =
+            "${mFormatter.format(Date(mCurrPlayTime.toLong()))}/${mFormatter.format(Date(allTime.toLong()))}"
+        mTextTime.text = time
     }
 
     private fun timerTick() {
