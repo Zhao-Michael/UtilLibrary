@@ -82,6 +82,7 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
     private var mIsVertical = false
     private var mShrinkSize = Point()
 
+    var mTickTime: Long = 300L
     var mConfigChangedCallback = {
         onConfigurationChanged()
     }
@@ -450,7 +451,7 @@ class VideoPlayer(context: Context, attrs: AttributeSet) :
 
             mOld_Position = mVideoView.currentPosition
 
-            Thread.sleep(300)
+            Thread.sleep(mTickTime)
         }
     }
 
